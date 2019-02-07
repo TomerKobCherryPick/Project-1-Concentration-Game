@@ -15,6 +15,8 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips:  \(flipCount)"
         }
     }
+    var emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🦇","🌚","🔥","🌪","🕷","🕸"]
+    var emoji = [Int:String]()
     
     @IBAction func touchNewGameButton(_ sender: UIButton) {
             flipCount = 0
@@ -39,6 +41,7 @@ class ViewController: UIViewController {
             print("chosen card wasn't in CardButtons")
         }
     }
+    
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -52,12 +55,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    var emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🎃","👻","💀","☠️","👺","😈"]
-    func emojiChoisesReset(){
-        emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🎃","👻","💀","☠️","👺","😈"]
-    }
-    
-    var emoji = [Int:String]()
     
     func emoji(for card: Card) -> String  {
         if emoji[card.identifier] == nil, emojiChoises.count > 0 {
@@ -65,6 +62,9 @@ class ViewController: UIViewController {
             emoji[card.identifier] = emojiChoises.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
+    }
+    func emojiChoisesReset(){
+        emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🦇","🌚","🔥","🌪","🕷","🕸"]
     }
 }
 
