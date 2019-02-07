@@ -8,14 +8,14 @@
 
 import Foundation
 class Concentration {
-  
+    
     var cards =  [Card]()
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard,  matchIndex != index {
-                   //check if cards  matched
+                //check if cards  matched
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true

@@ -9,10 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-   lazy var game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
+    lazy var game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips:  \(flipCount)"
+        }
+    }
+    
+    @IBAction func touchNewGameButton(_ sender: UIButton) {
+            flipCount = 0
+            emojiChoisesReset()
+            for index in cardButtons.indices {
+                let button = cardButtons[index]
+                button.setTitle("", for: UIControl.State.normal)
+                button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
         }
     }
     
@@ -41,15 +52,18 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     var emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🎃","👻","💀","☠️","👺","😈"]
+    func emojiChoisesReset(){
+        emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🎃","👻","💀","☠️","👺","😈"]
+    }
+    
     var emoji = [Int:String]()
     
     func emoji(for card: Card) -> String  {
         if emoji[card.identifier] == nil, emojiChoises.count > 0 {
-                let randomIndex = Int(arc4random_uniform(UInt32(emojiChoises.count)))
-                emoji[card.identifier] = emojiChoises.remove(at: randomIndex)
-            }
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoises.count)))
+            emoji[card.identifier] = emojiChoises.remove(at: randomIndex)
+        }
         return emoji[card.identifier] ?? "?"
     }
 }
