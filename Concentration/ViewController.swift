@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiChoises = ["🎃","👻","😎","😜"]
+    var emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🎃","👻","💀","☠️","👺","😈"]
     var emoji = [Int:String]()
     
     func emoji(for card: Card) -> String  {
