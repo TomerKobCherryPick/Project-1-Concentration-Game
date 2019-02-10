@@ -9,18 +9,29 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     lazy var game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips:  \(flipCount)"
         }
     }
-    var emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🦇","🌚","🔥","🌪","🕷","🕸"]
+    
+    let themes = [
+        ["🎃","👻","💀","☠️","👺","😈", "🦇","🌚","🔥","🌪","🕷","🕸"],
+        ["⚽️","🏀","🏈","⚾️","🥎","🎾", "🏐","🏉","🥏","🎱","🏓","🏏"],
+        ["🚗","🚕","🚙","🚌","🚎","🏎", "🚓","🚑","🚒","🚐","🚚","🚛"],
+        ["🍏","🍎","🍐","🍊","🍋","🍌", "🍉","🍇","🍓","🥥","🥝","🍒"],
+        ["🥐","🥯","🥖","🍞","🥨","🥞", "🍟","🥪","🥙","🌮","🍚","🥧"],
+        ["🐶","🐱","🐭","🐹","🐰","🦊", "🐻","🐼","🦊","🐸","🐔","🐧"]
+    ]
+    lazy var emojiChoises = emojiChoisesReset()
     var emoji = [Int:String]()
+    
     
     @IBAction func touchNewGameButton(_ sender: UIButton) {
             flipCount = 0
-            emojiChoisesReset()
+            emojiChoises = emojiChoisesReset()
             for index in cardButtons.indices {
                 let button = cardButtons[index]
                 button.setTitle("", for: UIControl.State.normal)
@@ -63,8 +74,11 @@ class ViewController: UIViewController {
         }
         return emoji[card.identifier] ?? "?"
     }
-    func emojiChoisesReset(){
-        emojiChoises = ["🎃","👻","💀","☠️","👺","😈", "🦇","🌚","🔥","🌪","🕷","🕸"]
+    
+    func emojiChoisesReset() -> [String] {
+        return themes[Int.random(in: 0..<themes.count)]
     }
+    
+    
 }
 
