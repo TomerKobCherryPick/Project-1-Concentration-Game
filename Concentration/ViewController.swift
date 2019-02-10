@@ -31,15 +31,18 @@ class ViewController: UIViewController {
     
     @IBAction func touchNewGameButton(_ sender: UIButton) {
             flipCount = 0
+            scoreLabel.text = "Score: 0"
             emojiChoises = emojiChoisesReset()
             for index in cardButtons.indices {
                 let button = cardButtons[index]
                 button.setTitle("", for: UIControl.State.normal)
                 button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-                game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
+                
         }
+         game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
     }
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
     
@@ -57,6 +60,7 @@ class ViewController: UIViewController {
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
+            scoreLabel.text = "Score: \(game.score)"
             if(card.isFaceUp){
                 button.setTitle(emoji(for: card), for: UIControl.State.normal)
                 button.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
