@@ -13,12 +13,12 @@ class ViewController: UIViewController {
     lazy var game = Concentration(NumberOfButtons: cardButtons.count)
     
     let backgroundThemes = [#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                           #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
-                           #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),
-                           #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),
-                           #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1),
-                           #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1),
-    ]
+                            #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
+                            #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),
+                            #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),
+                            #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1),
+                            #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1),
+                            ]
     
     let cardThemes = [#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1),
                       #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1),
@@ -48,12 +48,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateRandomTheme()
         view.backgroundColor = backgroundTheme
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            button.backgroundColor = cardTheme
-        }
+        updateViewFromModel()
     }
     
     @IBAction func touchNewGameButton(_ sender: UIButton) {
@@ -66,7 +62,7 @@ class ViewController: UIViewController {
             button.setTitle("", for: UIControl.State.normal)
             button.backgroundColor = cardTheme
         }
-         game.resetGame(NumberOfButtons: cardButtons.count)
+        game.resetGame(NumberOfButtons: cardButtons.count)
     }
     
     @IBOutlet weak var scoreLabel: UILabel!
