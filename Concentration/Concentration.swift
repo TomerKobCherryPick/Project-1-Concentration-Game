@@ -13,17 +13,23 @@ class Concentration {
     var indexOfOneAndOnlyFaceUpCard: Int?
     var score = 0
     var cardsThatHaveBeenSeen =  [Int: Bool]()
+    var numberOfFlips = 0
+    
     func chooseCard(at index: Int) {
         if !cards[index].isMatched {
-            if let matchIndex = indexOfOneAndOnlyFaceUpCard,  matchIndex != index {
+            if let IndexOfFacedUpCard = indexOfOneAndOnlyFaceUpCard,  IndexOfFacedUpCard != index {
                 //check if cards  matched
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[IndexOfFacedUpCard].identifier == cards[index].identifier {
                     score += 2
-                    cards[matchIndex].isMatched = true
+                    cards[IndexOfFacedUpCard].isMatched = true
                     cards[index].isMatched = true
                 } else {
-                degradeScore(cardIndex: index)
-                degradeScore(cardIndex: matchIndex)
+                    if !degradeScore(cardIndex: index) {
+                         cardsThatHaveBeenSeen[cards[index].identifier] = true
+                    }
+                    if !degradeScore(cardIndex: IndexOfFacedUpCard) {
+                         cardsThatHaveBeenSeen[cards[IndexOfFacedUpCard].identifier] = true
+                    }
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = nil
@@ -38,11 +44,12 @@ class Concentration {
         }
     }
     
-    func degradeScore(cardIndex index: Int) {
-        if let _ = cardsThatHaveBeenSeen[cards[index].identifier] {
+    func degradeScore(cardIndex index: Int) ->  Bool{
+        if cardsThatHaveBeenSeen[cards[index].identifier] != nil {
             score -= 1
+            return true
         } else {
-        cardsThatHaveBeenSeen[cards[index].identifier] = true
+            return false
         }
     }
     init(numberOfgPairOfCards: Int){
