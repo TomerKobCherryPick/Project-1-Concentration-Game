@@ -46,15 +46,14 @@ class ViewController: UIViewController {
     var emoji = [Int:String]()
     
     
-     convenience init(){
-        self.init()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         generateRandomTheme()
         view.backgroundColor = backgroundTheme
         for index in cardButtons.indices {
             let button = cardButtons[index]
             button.backgroundColor = cardTheme
         }
-        
     }
     
     @IBAction func touchNewGameButton(_ sender: UIButton) {
