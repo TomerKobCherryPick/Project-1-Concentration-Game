@@ -14,6 +14,7 @@ class Concentration {
     var score = 0
     var cardsThatHaveBeenSeen =  [Int: Bool]()
     var numberOfFlips = 0
+    var timeWhenGameStarted = Date.init()
     
     func chooseCard(at index: Int) {
         if !cards[index].isMatched {
@@ -21,7 +22,7 @@ class Concentration {
             if let IndexOfFacedUpCard = indexOfOneAndOnlyFaceUpCard,  IndexOfFacedUpCard != index {
                 //check if cards  matched
                 if cards[IndexOfFacedUpCard].identifier == cards[index].identifier {
-                    score += 2
+                    score += Int(10 * calulateFactor())
                     cards[IndexOfFacedUpCard].isMatched = true
                     cards[index].isMatched = true
                 } else {
@@ -44,10 +45,15 @@ class Concentration {
             }
         }
     }
+    func calulateFactor() -> Double {
+        let currentTime = Date.init()
+        return 1 / currentTime.timeIntervalSince(timeWhenGameStarted)
+        
+    }
     
     func degradeScore(cardIndex index: Int) ->  Bool{
         if cardsThatHaveBeenSeen[cards[index].identifier] != nil {
-            score -= 1
+            score -= Int(2  * 1 / calulateFactor())
             return true
         } else {
             return false
@@ -65,6 +71,7 @@ class Concentration {
         score = 0
         cardsThatHaveBeenSeen =  [:]
         numberOfFlips = 0
+        timeWhenGameStarted = Date.init()
         
     }
     func resetCards(numberOfgPairOfCards: Int){
