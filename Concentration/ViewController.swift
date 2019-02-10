@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
+    lazy var game = Concentration(NumberOfButtons: cardButtons.count)
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips:  \(flipCount)"
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
                 
         }
-         game = Concentration(numberOfgPairOfCards: (cardButtons.count + 1) / 2)
+         game.resetGame(NumberOfButtons: cardButtons.count)
     }
     
     @IBOutlet weak var scoreLabel: UILabel!

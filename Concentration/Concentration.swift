@@ -52,7 +52,22 @@ class Concentration {
             return false
         }
     }
-    init(numberOfgPairOfCards: Int){
+    init(NumberOfButtons: Int){
+        let numberOfgPairOfCards = (NumberOfButtons + 1) / 2
+        resetCards(numberOfgPairOfCards: numberOfgPairOfCards)
+    }
+    
+    func resetGame(NumberOfButtons: Int){
+        let numberOfgPairOfCards = (NumberOfButtons + 1) / 2
+        resetCards(numberOfgPairOfCards: numberOfgPairOfCards)
+        indexOfOneAndOnlyFaceUpCard = nil
+        score = 0
+        cardsThatHaveBeenSeen =  [:]
+        numberOfFlips = 0
+        
+    }
+    func resetCards(numberOfgPairOfCards: Int){
+        cards = []
         for _ in 1...numberOfgPairOfCards {
             let card = Card()
             cards += [card, card]
