@@ -10,89 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Concentration/ViewController.swift"
-            timestampString = "571507795.021578"
+            timestampString = "571573593.528331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "ViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Concentration.ViewController.game.getter : Concentration.Concentration"
-                  moduleName = "Concentration"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tomerkobrinsky/ios/projects/project1/Project-1-Concentration-Game/Concentration/ViewController.swift"
-                  timestampString = "571504981.492234"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "164">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Concentration.ViewController.game.setter : Concentration.Concentration"
-                  moduleName = "Concentration"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tomerkobrinsky/ios/projects/project1/Project-1-Concentration-Game/Concentration/ViewController.swift"
-                  timestampString = "571504981.498365"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "128">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Concentration.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Concentration.ViewController"
-                  moduleName = "Concentration"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tomerkobrinsky/ios/projects/project1/Project-1-Concentration-Game/Concentration/ViewController.swift"
-                  timestampString = "571504981.5033849"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "59">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Concentration.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Concentration.ViewController&gt;"
-                  moduleName = "Concentration"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tomerkobrinsky/ios/projects/project1/Project-1-Concentration-Game/Concentration/ViewController.swift"
-                  timestampString = "571504981.509414"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Concentration/ViewController.swift"
-            timestampString = "571507795.0216399"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "EmojiTheme"
             landmarkType = "24">
             <Locations>
