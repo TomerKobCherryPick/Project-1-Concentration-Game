@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private lazy var game = Concentration(NumberOfButtons: cardButtons.count)
+    private lazy var game = Concentration(numberOfButtons: cardButtons.count)
     private let backgroundThemes = [#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
                             #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
                             #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
             button.setTitle("", for: UIControl.State.normal)
             button.backgroundColor = cardTheme
         }
-        game.resetGame(NumberOfButtons: cardButtons.count)
+        game.resetGame(numberOfButtons: cardButtons.count)
     }
     
     @IBOutlet private weak var scoreLabel: UILabel!

@@ -45,23 +45,32 @@ class Concentration {
             if let IndexOfFacedUpCard = indexOfOneAndOnlyFaceUpCard,  IndexOfFacedUpCard != index {
                 //check if cards  matched
                 if cards[IndexOfFacedUpCard].identifier == cards[index].identifier {
-                    score += Int(100 * calulateFactor())
-                    cards[IndexOfFacedUpCard].isMatched = true
-                    cards[index].isMatched = true
+                    cardsMatchedUpdate(index: index, IndexOfFacedUpCard: IndexOfFacedUpCard)
                 } else {
-                    if !degradeScore(cardIndex: index) {
-                        cardsThatHaveBeenSeen[cards[index].identifier] = true
-                    }
-                    if !degradeScore(cardIndex: IndexOfFacedUpCard) {
-                        cardsThatHaveBeenSeen[cards[IndexOfFacedUpCard].identifier] = true
-                    }
+                    cardsNotMatchedUpdate(index: index, IndexOfFacedUpCard:  IndexOfFacedUpCard)
                 }
                 cards[index].isFaceUp = true
-                
             } else {
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
+    }
+    private func cardsNotMatchedUpdate(index: Int, IndexOfFacedUpCard: Int) {
+        if !hadBeenSeen(index: index){
+            cardsThatHaveBeenSeen[cards[index].identifier] = true
+        } else {
+            degradeScore()
+        }
+        if !hadBeenSeen(index: IndexOfFacedUpCard){
+            cardsThatHaveBeenSeen[cards[IndexOfFacedUpCard].identifier] = true
+        } else {
+            degradeScore()
+        }
+    }
+    private func cardsMatchedUpdate(index: Int, IndexOfFacedUpCard: Int){
+        score += Int(100 * calulateFactor())
+        cards[IndexOfFacedUpCard].isMatched = true
+        cards[index].isMatched = true
     }
     private func calulateFactor() -> Double {
         let currentTime = Date.init()
@@ -69,22 +78,26 @@ class Concentration {
         
     }
     
-    private func degradeScore(cardIndex index: Int) ->  Bool{
-        if cardsThatHaveBeenSeen[cards[index].identifier] != nil {
-            score -= Int(2  * 1 / calulateFactor())
-            return true
-        } else {
+    private func hadBeenSeen (index: Int) -> Bool{
+        if cardsThatHaveBeenSeen[cards[index].identifier] == nil {
             return false
+        } else {
+            return true
         }
     }
-    init(NumberOfButtons: Int){
-        assert(NumberOfButtons > 0, "Concentration.init(at: \(NumberOfButtons): you must have at least 1 button")
-        let numberOfgPairOfCards = (NumberOfButtons + 1) / 2
-        resetCards(numberOfgPairOfCards: numberOfgPairOfCards)
+    
+    private func degradeScore() {
+            score -= Int(2  * 1 / calulateFactor())
     }
     
-    func resetGame(NumberOfButtons: Int){
-        let numberOfgPairOfCards = (NumberOfButtons + 1) / 2
+    init(numberOfButtons: Int){
+        assert(numberOfButtons > 0, "Concentration.init(at: \(numberOfButtons): you must have at least 1 button")
+        let numberOfPairOfCards = (numberOfButtons + 1) / 2
+        resetCards(numberOfgPairOfCards: numberOfPairOfCards)
+    }
+    
+    func resetGame(numberOfButtons: Int){
+        let numberOfgPairOfCards = (numberOfButtons + 1) / 2
         resetCards(numberOfgPairOfCards: numberOfgPairOfCards)
         indexOfOneAndOnlyFaceUpCard = nil
         score = 0
@@ -100,8 +113,5 @@ class Concentration {
         }
         cards.shuffle()
     }
-    
-    private func shuffleCards() {
-        cards.shuffle()
-    }
+   
 }
